@@ -9,7 +9,7 @@ def run_picar():
     print("==========piCar Client Start==========")
     my_driver = driver()
     my_driver.setStatus(motor=0.0, servo=0.0, dist=0x00, mode="stop")
-    tmp_speed = 10
+    tmp_speed = 1
     Speed_Control_Flag = True
 
     # my_driver.setStatus(...)

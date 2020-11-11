@@ -3,6 +3,7 @@
 
 from driver import driver
 import time
+from ImageProcess import direction_suggest
 
 
 def run_picar():
@@ -20,8 +21,10 @@ def run_picar():
             cap2 = cv2.VideoCapture(1)
             _, frame2 = cap2.read()
             cv2.imshow("image2", frame2)
-            speed_param = 0
+
+            speed_param = direction_suggest(frame2)
             my_driver.setStatus(servo = speed_param)
+            
             print("Servo: %0.2f" % speed_param)
 
             my_driver.getStatus(sensor = 0, mode = 0)

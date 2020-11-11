@@ -1,0 +1,6 @@
+kc_3f.py和kc_3f_new.py为两个版本的总程序，最终采用了kc_3f_new.py
+line.py包含巡线相关函数
+stopsign.py包含停车标识符相关函数
+park.py包含车位处理相关函数
+HG.py为自选部分识别手势程序
+OCR.py和OCR_webAPI.py为自选部分识别文字程序的两种版本

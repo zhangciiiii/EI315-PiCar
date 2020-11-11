@@ -13,29 +13,30 @@ def cv_imread(file_path):
     return cv_img
 
 
-
+# read the image and convert to gray
 img = cv_imread('straight.jpg') # straight left right
-
 img = img[:150,:,:] #150,640
-
 img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
+# use a circle kernel to mask the obstacle
 cv2.circle(img,(240,-80),150,255,-1)
 cv2.imwrite('straight_gray.jpg'  , img)
 
+# convert to binary
 _, img = cv2.threshold(img, 100, 255, cv2.THRESH_BINARY)
 
+# dilate operation
 kernel = np.ones((3, 3), np.uint8)
 img = cv2.dilate(img,kernel,iterations=3)
 
+# use hough transformation to detect lines
 mask = img.copy()
 mask[mask<100]=1
 mask[mask>=100]=0
-
 lines = cv2.HoughLines(mask,1,np.pi/180,100) 
-result = img.copy()
 
 
+# count
 lines = lines[:,0,1]
 
 left_cnt = copy.deepcopy(lines)
